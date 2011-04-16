@@ -3,6 +3,7 @@ set nocompatible
 set number
 set ruler
 syntax on
+set cursorline
 
 " Set encoding
 set encoding=utf-8
@@ -13,7 +14,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-set list listchars=tab:\ \ ,trail:·
+set list listchars=tab:\ \ ,trail:·,nbsp:%
 
 " Searching
 set hlsearch
@@ -78,6 +79,7 @@ au BufRead,BufNewFile *.txt call s:setupWrapping()
 au FileType python  set tabstop=4 textwidth=79
 
 au BufNewFile,BufRead *.less set ft=less
+au BufNewFile,BufRead *.tt set ft=html
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -92,9 +94,47 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Normal mode: <Leader>t
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
+map <D-S-]> gt
+imap <D-S-]> <ESC>gt
+map <D-S-[> gT
+imap <D-S-[> <ESC>gT
+map <D-1> 1gt
+imap <D-1> <ESC>1gt
+map <D-2> 2gt
+imap <D-2> <ESC>2gt
+map <D-3> 3gt
+imap <D-3> <ESC>3gt
+map <D-4> 4gt
+imap <D-4> <ESC>4gt
+map <D-5> 5gt
+imap <D-5> <ESC>5gt
+map <D-6> 6gt
+imap <D-6> <ESC>6gt
+map <D-7> 7gt
+imap <D-7> <ESC>7gt
+map <D-8> 8gt
+imap <D-8> <ESC>8gt
+map <D-9> 9gt
+imap <D-9> <ESC>9gt
+map <D-0> :tablast<CR>
+imap <D-0> <ESC>:tablast<CR>
+
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+
+
+
+imap <D-[> <ESC><<
+imap <D-]> <ESC>>>
+nmap <D-[> <<
+nmap <D-]> >>
+vmap <D-[> <gv
+vmap <D-]> >gv
+
+
+
+
 
 " Unimpaired configuration
 " Bubble single lines
@@ -113,11 +153,18 @@ set modeline
 set modelines=10
 
 " Default color scheme
-color oceandeep
+
+" let g:solarized_termcolors = 16
+set background=dark
+color solarized
 
 " Directories for swp files
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
+
+" here i'm setting nospell so it won't break some of my snippets, i don't
+" really use it anyway
+set nospell
 
 " Turn off jslint errors by default
 let g:JSLintHighlightErrorLine = 0
@@ -129,3 +176,80 @@ let macvim_hig_shift_movement = 1
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+set visualbell
+set scrolloff=3
+
+" map cyrillic keys to latin to use in command mode
+map ё `
+map й q
+map ц w
+map у e
+map к r
+map е t
+map н y
+map г u
+map ш i
+map щ o
+map з p
+map х [
+map ъ ]
+map ф a
+map ы s
+map в d
+map а f
+map п g
+map р h
+map о j
+map л k
+map д l
+map ж ;
+map э '
+map я z
+map ч x
+map с c
+map м v
+map и b
+map т n
+map ь m
+map б ,
+map ю .
+"map . /
+
+map Ё ~
+map Й Q
+map Ц W
+map У E
+map К R
+map Е T
+map Н Y
+map Г U
+map Ш I
+map Щ O
+map З P
+map Х {
+map Ъ }
+map Ф A
+map Ы S
+map В D
+map А F
+map П G
+map Р H
+map О J
+map Л K
+map Д L
+map Ж :
+map Э "
+map Я Z
+map Ч X
+map С C
+map М V
+map И B
+map Т N
+map Ь M
+map Б <
+map Ю >
+"map , ?
+
+
+
