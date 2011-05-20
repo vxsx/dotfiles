@@ -20,38 +20,14 @@ if has("gui_macvim")
   " Command-/ to toggle comments
   map <D-/> <plug>NERDCommenterToggle<CR>
 
-  " Command-][ to increase/decrease indentation
-  vmap <D-]> >gv
-  vmap <D-[> <gv
-
-  " Map Command-# to switch tabs
-  map  <D-0> 0gt
-  imap <D-0> <Esc>0gt
-  map  <D-1> 1gt
-  imap <D-1> <Esc>1gt
-  map  <D-2> 2gt
-  imap <D-2> <Esc>2gt
-  map  <D-3> 3gt
-  imap <D-3> <Esc>3gt
-  map  <D-4> 4gt
-  imap <D-4> <Esc>4gt
-  map  <D-5> 5gt
-  imap <D-5> <Esc>5gt
-  map  <D-6> 6gt
-  imap <D-6> <Esc>6gt
-  map  <D-7> 7gt
-  imap <D-7> <Esc>7gt
-  map  <D-8> 8gt
-  imap <D-8> <Esc>8gt
-  map  <D-9> 9gt
-  imap <D-9> <Esc>9gt
 endif
 
 " Start without the toolbar
 set guioptions-=T
 
 " Default gui color scheme
-color vwilight
+set background=dark
+colorscheme solarized
 
 " ConqueTerm wrapper
 function StartTerm()
@@ -60,7 +36,6 @@ function StartTerm()
 endfunction
 
 " Project Tree
-autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
 autocmd FocusGained * call s:UpdateNERDTree()
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
@@ -77,30 +52,30 @@ function s:CloseIfOnlyNerdTreeLeft()
 endfunction
 
 " If the parameter is a directory, cd into it
-function s:CdIfDirectory(directory)
-  let explicitDirectory = isdirectory(a:directory)
-  let directory = explicitDirectory || empty(a:directory)
+" function s:CdIfDirectory(directory)
+"   let explicitDirectory = isdirectory(a:directory)
+"   let directory = explicitDirectory || empty(a:directory)
 
-  if explicitDirectory
-    exe "cd " . fnameescape(a:directory)
-  endif
+"   if explicitDirectory
+"     exe "cd " . fnameescape(a:directory)
+"   endif
 
-  " Allows reading from stdin
-  " ex: git diff | mvim -R -
-  if strlen(a:directory) == 0 
-    return
-  endif
+"   " Allows reading from stdin
+"   " ex: git diff | mvim -R -
+"   if strlen(a:directory) == 0 
+"     return
+"   endif
 
-  if directory
-    NERDTree
-    wincmd p
-    bd
-  endif
+"   if directory
+"     NERDTree
+"     wincmd p
+"     bd
+"   endif
 
-  if explicitDirectory
-    wincmd p
-  endif
-endfunction
+"   if explicitDirectory
+"     wincmd p
+"   endif
+" endfunction
 
 " NERDTree utility function
 function s:UpdateNERDTree(...)
@@ -147,64 +122,64 @@ function s:DefineCommand(name, destination)
 endfunction
 
 " Public NERDTree-aware versions of builtin functions
-function ChangeDirectory(dir, ...)
-  execute "cd " . fnameescape(a:dir)
-  let stay = exists("a:1") ? a:1 : 1
+" function ChangeDirectory(dir, ...)
+"   execute "cd " . fnameescape(a:dir)
+"   let stay = exists("a:1") ? a:1 : 1
 
-  NERDTree
+"   NERDTree
 
-  if !stay
-    wincmd p
-  endif
-endfunction
+"   if !stay
+"     wincmd p
+"   endif
+" endfunction
 
-function Touch(file)
-  execute "!touch " . shellescape(a:file, 1)
-  call s:UpdateNERDTree()
-endfunction
+" function Touch(file)
+"   execute "!touch " . shellescape(a:file, 1)
+"   call s:UpdateNERDTree()
+" endfunction
 
-function Remove(file)
-  let current_path = expand("%")
-  let removed_path = fnamemodify(a:file, ":p")
+" function Remove(file)
+"   let current_path = expand("%")
+"   let removed_path = fnamemodify(a:file, ":p")
 
-  if (current_path == removed_path) && (getbufvar("%", "&modified"))
-    echo "You are trying to remove the file you are editing. Please close the buffer first."
-  else
-    execute "!rm " . shellescape(a:file, 1)
-  endif
+"   if (current_path == removed_path) && (getbufvar("%", "&modified"))
+"     echo "You are trying to remove the file you are editing. Please close the buffer first."
+"   else
+"     execute "!rm " . shellescape(a:file, 1)
+"   endif
 
-  call s:UpdateNERDTree()
-endfunction
+"   call s:UpdateNERDTree()
+" endfunction
 
-function Mkdir(file)
-  execute "!mkdir " . shellescape(a:file, 1)
-  call s:UpdateNERDTree()
-endfunction
+" function Mkdir(file)
+"   execute "!mkdir " . shellescape(a:file, 1)
+"   call s:UpdateNERDTree()
+" endfunction
 
-function Edit(file)
-  if exists("b:NERDTreeRoot")
-    wincmd p
-  endif
+" function Edit(file)
+"   if exists("b:NERDTreeRoot")
+"     wincmd p
+"   endif
 
-  execute "e " . fnameescape(a:file)
+"   execute "e " . fnameescape(a:file)
 
-ruby << RUBY
-  destination = File.expand_path(VIM.evaluate(%{system("dirname " . shellescape(a:file, 1))}))
-  pwd         = File.expand_path(Dir.pwd)
-  home        = pwd == File.expand_path("~")
+" ruby << RUBY
+"   destination = File.expand_path(VIM.evaluate(%{system("dirname " . shellescape(a:file, 1))}))
+"   pwd         = File.expand_path(Dir.pwd)
+"   home        = pwd == File.expand_path("~")
 
-  if home || Regexp.new("^" + Regexp.escape(pwd)) !~ destination
-    VIM.command(%{call ChangeDirectory(fnamemodify(a:file, ":h"), 0)})
-  end
-RUBY
-endfunction
+"   if home || Regexp.new("^" + Regexp.escape(pwd)) !~ destination
+"     VIM.command(%{call ChangeDirectory(fnamemodify(a:file, ":h"), 0)})
+"   end
+" RUBY
+" endfunction
 
 " Define the NERDTree-aware aliases
-call s:DefineCommand("cd", "ChangeDirectory")
-call s:DefineCommand("touch", "Touch")
-call s:DefineCommand("rm", "Remove")
-call s:DefineCommand("e", "Edit")
-call s:DefineCommand("mkdir", "Mkdir")
+" call s:DefineCommand("cd", "ChangeDirectory")
+" call s:DefineCommand("touch", "Touch")
+" call s:DefineCommand("rm", "Remove")
+" call s:DefineCommand("e", "Edit")
+" call s:DefineCommand("mkdir", "Mkdir")
 
 " Include user's local vim config
 if filereadable(expand("~/.gvimrc.local"))

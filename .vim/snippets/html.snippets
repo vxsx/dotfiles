@@ -117,7 +117,7 @@ snippet head
 snippet title
 	<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>${2}
 snippet script
-	<script type="text/javascript" charset="utf-8">
+	<script type="text/javascript">
 		${1}
 	</script>${2}
 snippet scriptsrc
@@ -188,6 +188,7 @@ snippet table
 	</table>${4}
 snippet textarea
 	<textarea name="${1:Name}" rows="${2:8}" cols="${3:40}">${4}</textarea>${5}
+#template toolkit
 snippet [
 	[% ${1} %]
 snippet .vrs
@@ -197,3 +198,9 @@ snippet dump
 		[% USE Dumper %]
 		<pre class="dumper">[% Dumper.dump(${1:CNT}) %]</pre>
 	[% END %]
+#some js
+snippet dom
+	$(function(){
+		${1}
+	})
+	

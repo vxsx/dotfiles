@@ -6,6 +6,7 @@ syntax on
 set cursorline
 
 " Set encoding
+set fileencodings=utf8,cp1251
 set encoding=utf-8
 
 " Whitespace stuff
@@ -25,6 +26,18 @@ set smartcase
 " Tab completion
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc
+
+" menu Encoding.UTF-8          :e ++enc=utf-8<CR>
+" menu Encoding.KOI8-R         :e ++enc=koi8-r<CR>
+" menu Encoding.KOI8-U         :e ++enc=koi8-u<CR>
+" menu Encoding.CP1251         :e ++enc=cp1251<CR>
+" menu Encoding.IBM-855        :e ++enc=ibm855<CR>
+" menu Encoding.IBM-866        :e ++enc=ibm866<CR>
+" menu Encoding.ISO-8859-5     :e ++enc=iso-8859-5<CR>
+" menu Encoding.Latin-1        :e ++enc=latin1<CR>
+" map <F2> :emenu Encoding.<TAB>
+
+
 
 " Status bar
 set laststatus=2
@@ -132,8 +145,8 @@ nmap <D-]> >>
 vmap <D-[> <gv
 vmap <D-]> >gv
 
-
-
+" make it easy
+nmap <Space> :
 
 
 " Unimpaired configuration
@@ -252,4 +265,31 @@ map Ю >
 "map , ?
 
 
+set guioptions+=a
+function! MakePattern(text)
+  let pat = escape(a:text, '\')
+  let pat = substitute(pat, '\_s\+$', '\\s\\*', '')
+  let pat = substitute(pat, '^\_s\+', '\\s\\*', '')
+  let pat = substitute(pat, '\_s\+',  '\\_s\\+', 'g')
+  return '\\V' . escape(pat, '\"')
+endfunction
+
+vnoremap <silent> <Leader>s :<C-U>let @/="<C-R>=MakePattern(@*)<CR>"<CR>:set hls<CR>
+nmap <silent> <Leader><Space> :noh<CR>
+
+
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+
+
+if has("autocmd")
+  autocmd! bufwritepost .vimrc source $MYVIMRC
+endif
+
+
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:<CR>
+  vmap <Leader>a: :Tabularize /:<CR>
+endif
 
