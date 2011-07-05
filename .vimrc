@@ -1,6 +1,6 @@
 set nocompatible
 
-set number
+" set number
 set ruler
 syntax on
 set cursorline
@@ -107,30 +107,30 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Normal mode: <Leader>t
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-map <D-S-]> gt
-imap <D-S-]> <ESC>gt
-map <D-S-[> gT
-imap <D-S-[> <ESC>gT
-map <D-1> 1gt
-imap <D-1> <ESC>1gt
-map <D-2> 2gt
-imap <D-2> <ESC>2gt
-map <D-3> 3gt
-imap <D-3> <ESC>3gt
-map <D-4> 4gt
-imap <D-4> <ESC>4gt
-map <D-5> 5gt
-imap <D-5> <ESC>5gt
-map <D-6> 6gt
-imap <D-6> <ESC>6gt
-map <D-7> 7gt
-imap <D-7> <ESC>7gt
-map <D-8> 8gt
-imap <D-8> <ESC>8gt
-map <D-9> 9gt
-imap <D-9> <ESC>9gt
-map <D-0> :tablast<CR>
-imap <D-0> <ESC>:tablast<CR>
+map    <D-S-]>   gt
+imap   <D-S-]>   <ESC>gt
+map    <D-S-[>   gT
+imap   <D-S-[>   <ESC>gT
+map    <D-1>     1gt
+imap   <D-1>     <ESC>1gt
+map    <D-2>     2gt
+imap   <D-2>     <ESC>2gt
+map    <D-3>     3gt
+imap   <D-3>     <ESC>3gt
+map    <D-4>     4gt
+imap   <D-4>     <ESC>4gt
+map    <D-5>     5gt
+imap   <D-5>     <ESC>5gt
+map    <D-6>     6gt
+imap   <D-6>     <ESC>6gt
+map    <D-7>     7gt
+imap   <D-7>     <ESC>7gt
+map    <D-8>     8gt
+imap   <D-8>     <ESC>8gt
+map    <D-9>     9gt
+imap   <D-9>     <ESC>9gt
+map    <D-0>     :tablast<CR>
+imap   <D-0>     <ESC>:tablast<CR>
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
@@ -156,6 +156,11 @@ nmap <C-Down> ]e
 " Bubble multiple lines
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
+" Bubble chunks of text not working
+" vmap <C-Right> dpgv
+" vmap <C-Left> dPgv
+
+
 
 " Enable syntastic syntax checking
 let g:syntastic_enable_signs=1
@@ -174,6 +179,8 @@ color solarized
 " Directories for swp files
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
+set undofile
+set undodir=~/.vim/backup
 
 " here i'm setting nospell so it won't break some of my snippets, i don't
 " really use it anyway
@@ -265,16 +272,7 @@ map Ю >
 "map , ?
 
 
-set guioptions+=a
-function! MakePattern(text)
-  let pat = escape(a:text, '\')
-  let pat = substitute(pat, '\_s\+$', '\\s\\*', '')
-  let pat = substitute(pat, '^\_s\+', '\\s\\*', '')
-  let pat = substitute(pat, '\_s\+',  '\\_s\\+', 'g')
-  return '\\V' . escape(pat, '\"')
-endfunction
-
-vnoremap <silent> <Leader>s :<C-U>let @/="<C-R>=MakePattern(@*)<CR>"<CR>:set hls<CR>
+" vnoremap <silent> <Leader>s :<C-U>let @/="<C-R>=MakePattern(@*)<CR>"<CR>:set hls<CR>
 nmap <silent> <Leader><Space> :noh<CR>
 
 
@@ -291,5 +289,42 @@ if exists(":Tabularize")
   vmap <Leader>a= :Tabularize /=<CR>
   nmap <Leader>a: :Tabularize /:<CR>
   vmap <Leader>a: :Tabularize /:<CR>
+  nmap <Leader>a<Space> :Tabularize /<Space><CR>
+  vmap <Leader>a<Space> :Tabularize /<Space><CR>
 endif
 
+iab lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
+nnoremap <Leader>[ <C-w>h<C-w><Bar>
+nnoremap <Leader>] <C-w>l<C-w><Bar>
+
+" thing is, if I leave only firefox.app - it opens firefox on my win7 virtual machine
+abbrev ff :! open -a /Applications/Firefox.app %:p<cr>
+abbrev gc :! open -a /Applications/Google\ Chrome.app %:p<cr>
+
+nnoremap <tab> %
+vnoremap <tab> %
+
+" this is for learning hjkl moving
+nnoremap <up>  <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up>   <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+inoremap jj <esc>
+
+nnoremap <leader>w <C-w>v<C-w>l
+nnoremap <leader>s <C-w>s<C-w>j:e
+nnoremap <leader>we <C-w>v<C-w>l:e <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <leader>se <C-w>s<C-w>j:e <C-R>=expand("%:p:h") . "/" <CR>
+
+set rnu
