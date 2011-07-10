@@ -1,5 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Volumes/buratino/cs3'
-let g:netrw_dirhist_2='/Volumes/buratino/cluberia'
-let g:netrw_dirhist_3='/Volumes/buratino/cs3'
+let g:netrw_dirhist_cnt =0

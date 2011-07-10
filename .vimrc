@@ -328,3 +328,11 @@ nnoremap <leader>we <C-w>v<C-w>l:e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <leader>se <C-w>s<C-w>j:e <C-R>=expand("%:p:h") . "/" <CR>
 
 set rnu
+
+nnoremap <Leader>gu :GundoToggle<CR>
+
+function! StripWhitespace ()
+    exec ':%s/ \+$//gc'
+endfunction
+map <Leader>s :call StripWhitespace ()<CR>
+

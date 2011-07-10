@@ -9,27 +9,27 @@
 "             See http://sam.zoy.org/wtfpl/COPYING for more details.
 "
 "============================================================================
-if exists("loaded_javascript_syntax_checker")
-    finish
-endif
-let loaded_javascript_syntax_checker = 1
+" if exists("loaded_javascript_syntax_checker")
+"     finish
+" endif
+" let loaded_javascript_syntax_checker = 1
 
-"bail if the user doesnt have jsl installed
-if !executable("jsl")
-    finish
-endif
+" "bail if the user doesnt have jsl installed
+" if !executable("jsl")
+"     finish
+" endif
 
-if !exists("g:syntastic_jsl_conf")
-    let g:syntastic_jsl_conf = ""
-endif
+" if !exists("g:syntastic_jsl_conf")
+"     let g:syntastic_jsl_conf = ""
+" endif
 
-function! SyntaxCheckers_javascript_GetLocList()
-    if empty(g:syntastic_jsl_conf)
-        let jslconf = ""
-    else
-        let jslconf = " -conf " . g:syntastic_jsl_conf
-    endif
-    let makeprg = "jsl" . jslconf . " -nologo -nofilelisting -nosummary -nocontext -process ".shellescape(expand('%'))
-    let errorformat='%W%f(%l): lint warning: %m,%-Z%p^,%W%f(%l): warning: %m,%-Z%p^,%E%f(%l): SyntaxError: %m,%-Z%p^,%-G'
-    return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
-endfunction
+" function! SyntaxCheckers_javascript_GetLocList()
+"     if empty(g:syntastic_jsl_conf)
+"         let jslconf = ""
+"     else
+"         let jslconf = " -conf " . g:syntastic_jsl_conf
+"     endif
+"     let makeprg = "jsl" . jslconf . " -nologo -nofilelisting -nosummary -nocontext -process ".shellescape(expand('%'))
+"     let errorformat='%W%f(%l): lint warning: %m,%-Z%p^,%W%f(%l): warning: %m,%-Z%p^,%E%f(%l): SyntaxError: %m,%-Z%p^,%-G'
+"     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
+" endfunction
