@@ -2,8 +2,9 @@
     editor = /usr/bin/vim
     pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
     mergeoptions = --no-edit
+    excludesfile = ~/.gitignore
 [user]
-	name = Vadim Sikora
+    name = Vadim Sikora
     email = vadim.sikora@gmail.com
 [color]
     ui = auto
@@ -28,8 +29,8 @@
     co = checkout
     br = branch
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	wtf = !git-wtf
+    wtf = !git-wtf
 [url "git@github.com:vxsx/"]
     insteadOf = github:
 [push]
-	default = simple
+    default = simple
