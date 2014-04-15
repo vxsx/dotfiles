@@ -1,6 +1,9 @@
---type-set=scss=.scss
 --ignore-dir=node_modules/
---type-set=coffeescript=.coffee
---type-set=coffee=.coffee
+--ignore-dir=.sass-cache
 
 --ignore-file=match:/-built[.]js$/
+--ignore-file=match:/min[.]css$/
+
+--type-set=scss=.scss
+--type-set=coffeescript=.coffee
+--type-set=coffee=.coffee
