@@ -60,8 +60,5 @@
     # [i]ndex, [w]ork tree, [c]ommit, [o]bject instead of a/b
     mnemonicprefix = true
 
-[push]
-    default = simple
-
 [credential]
     helper = osxkeychain
