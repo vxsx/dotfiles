@@ -1,5 +1,4 @@
 [core]
-    editor = /usr/bin/vim
     pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
     mergeoptions = --no-edit
     excludesfile = ~/.gitignore
