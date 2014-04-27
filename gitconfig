@@ -1,5 +1,5 @@
 [core]
-    pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
+    pager = ~/.dotfiles/bin/diff-highlight | less
     mergeoptions = --no-edit
     excludesfile = ~/.gitignore
 
