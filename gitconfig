@@ -52,6 +52,9 @@
     # Unstage changes from the index
     unstage = reset HEAD --
 
+    # Deletes local branches that have been merged into master
+    cleanup = "!git branch --merged master | grep -v '\\* master' | xargs -n 1 git branch -d"
+
 [url "git@github.com:"]
     insteadOf = github:
 
