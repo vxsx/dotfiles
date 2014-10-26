@@ -4,7 +4,7 @@ export ZSH_THEME="vxsx"
 export SOLARIZED_THEME=light
 
 DISABLE_AUTO_TITLE=true
-plugins=(git git-extras bower tmuxinator)
+plugins=(git git-extras bower tmuxinator fabric virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -16,7 +16,6 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=$PATH:$HOME/Library/Python/2.7/bin
 
 export PATH=/opt/local/bin:/opt/local/sbin:~/bin:/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=/opt/local/libexec/perl5.16/sitebin/:$PATH
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
