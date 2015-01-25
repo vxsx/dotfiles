@@ -19,16 +19,16 @@ _lancet_commands() {
 
     commands=(
         'activate:Switch to this project.'
-        'browse:Open the issue tracker page for the given...'
-        'harvest-projects:List Harvest projects, optionally filtered...'
+        'browse:Open the issue tracker page for the given issue ID.'
+        'harvest-projects:List Harvest projects, optionally filtered by name.'
         'harvest-tasks:List Harvest tasks for the given project ID.'
-        'init:Wizard to create a project-level...'
+        'init:Wizard to create a project-level configuration.'
         'logout:Forget saved passwords for the web services.'
         'pause:Pause work on the current issue.'
         'pr:Create a new pull request for this issue.'
-        'resume:Resume work on the currently active issue (based on branch name)'
-        'setup:Wizard to create the user-level configuration...'
-        'time:Start an Harvest timer for the given issue.'
+        'resume:Resume work on the currently active issue (based on branch name).'
+        'setup:Wizard to create the user-level configuration.'
+        'time:Start a Harvest timer for the given issue.'
         'workon:Start work on a given issue.'
     )
 
