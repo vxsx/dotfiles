@@ -4,7 +4,7 @@ export ZSH_THEME="vxsx"
 export SOLARIZED_THEME=light
 
 DISABLE_AUTO_TITLE=true
-plugins=(git git-extras bower tmuxinator fabric virtualenv sublime)
+plugins=(git git-extras bower tmuxinator fabric virtualenv sublime brew)
 
 source $ZSH/oh-my-zsh.sh
 
