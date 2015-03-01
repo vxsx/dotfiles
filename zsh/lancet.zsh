@@ -20,6 +20,7 @@ _lancet_commands() {
     commands=(
         'activate:Switch to this project.'
         'browse:Open the issue tracker page for the given issue ID.'
+        'checkout:Checkout the branch for the given issue.'
         'harvest-projects:List Harvest projects, optionally filtered by name.'
         'harvest-tasks:List Harvest tasks for the given project ID.'
         'init:Wizard to create a project-level configuration.'
@@ -110,6 +111,11 @@ _lancet-workon() {
     _arguments -s : \
         $common_opts \
         '--base[Base branch]:( )' \
+        ': :->issue' && ret=0
+}
+_lancet-checkout() {
+    _arguments -s : \
+        $common_opts \
         ': :->issue' && ret=0
 }
 
