@@ -2,7 +2,7 @@
 
 typeset -ga common_opts
 common_opts=(
-    '--help[Show help]'
+    "${(@f)$(lancet _arguments)}"
 )
 
 local expl
@@ -18,25 +18,10 @@ _lancet_commands() {
     local -a commands
 
     commands=(
-        'activate:Switch to this project.'
-        'browse:Open the issue tracker page for the given issue ID.'
-        'checkout:Checkout the branch for the given issue.'
-        'harvest-projects:List Harvest projects, optionally filtered by name.'
-        'harvest-tasks:List Harvest tasks for the given project ID.'
-        'init:Wizard to create a project-level configuration.'
-        'logout:Forget saved passwords for the web services.'
-        'pause:Pause work on the current issue.'
-        'pr:Create a new pull request for this issue.'
-        'resume:Resume work on the currently active issue (based on branch name).'
-        'setup:Wizard to create the user-level configuration.'
-        'time:Start a Harvest timer for the given issue.'
-        'workon:Start work on a given issue.'
+        "${(@f)$(lancet _commands)}"
     )
 
     _arguments \
-        '--version[Show version and exit]' \
-        '--setup-helper[Print shell integration helper and exit]' \
-        '--debug[Show debug information]' \
         $common_opts \
         '*:: :->subcmds' && ret=0
 
