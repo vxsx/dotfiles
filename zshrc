@@ -4,7 +4,7 @@ export ZSH_THEME="vxsx"
 export SOLARIZED_THEME=light
 
 DISABLE_AUTO_TITLE=true
-plugins=(git git-extras bower tmuxinator fabric virtualenv sublime brew)
+plugins=(git git-extras bower tmuxinator fabric virtualenv sublime brew npm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -22,3 +22,6 @@ export PATH=/opt/local/bin:/opt/local/sbin:~/bin:/usr/local/bin:/usr/local/sbin:
 export PATH="/usr/local/heroku/bin:$PATH"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
+. ~/.profile
+. `brew --prefix`/etc/profile.d/z.sh
