@@ -5,13 +5,13 @@
 
 [user]
     name = Vadim Sikora
-    email = vadim.sikora@gmail.com
+    email = vadim.sikora@divio.ch
 
 [apply]
     whitespace = fix
 
 [color]
-    ui = auto
+    ui = true
 
 [color "branch"]
     current = yellow reverse
@@ -64,3 +64,6 @@
 
 [credential]
     helper = osxkeychain
+
+[push]
+	default = current
