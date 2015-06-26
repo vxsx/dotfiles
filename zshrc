@@ -6,10 +6,9 @@ export SOLARIZED_THEME=light
 DISABLE_AUTO_TITLE=true
 plugins=(git git-extras bower tmuxinator fabric virtualenv sublime brew npm)
 
-source $ZSH/oh-my-zsh.sh
 
 export SVN_EDITOR=vim
-export EDITOR=vim
+export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
 export LC_ALL="en_US.UTF-8"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
@@ -22,6 +21,8 @@ export PATH=/opt/local/bin:/opt/local/sbin:~/bin:/usr/local/bin:/usr/local/sbin:
 export PATH="/usr/local/heroku/bin:$PATH"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
+source $ZSH/oh-my-zsh.sh
 
 . ~/.profile
 . `brew --prefix`/etc/profile.d/z.sh
