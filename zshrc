@@ -6,7 +6,6 @@ export SOLARIZED_THEME=light
 DISABLE_AUTO_TITLE=true
 plugins=(git git-extras bower tmuxinator fabric virtualenv sublime brew npm)
 
-
 export SVN_EDITOR=vim
 export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
 export LC_ALL="en_US.UTF-8"
@@ -16,11 +15,6 @@ export PATH=$PATH:$HOME/Library/Python/2.7/bin
 export PATH=$PATH:$HOME/.local/bin
 
 export PATH=/opt/local/bin:/opt/local/sbin:~/bin:/usr/local/bin:/usr/local/sbin:$PATH
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
 source $ZSH/oh-my-zsh.sh
 
