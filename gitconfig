@@ -65,8 +65,15 @@
     # [i]ndex, [w]ork tree, [c]ommit, [o]bject instead of a/b
     mnemonicprefix = true
 
+[diff "spaceman-diff"]
+    command = ~/.dotfiles/bin/spaceman-diff
+
 [credential]
     helper = osxkeychain
 
 [push]
-	default = current
+    default = current
+[filter "lfs"]
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
