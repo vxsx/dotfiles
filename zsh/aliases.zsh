@@ -13,3 +13,5 @@ alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup
 alias photoshop='open -b "com.adobe.Photoshop"'
 
 alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+
+alias rmpyc="find . -name '*.pyc' -delete"
