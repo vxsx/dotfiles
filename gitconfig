@@ -58,6 +58,9 @@
 [url "git@github.com:"]
     insteadOf = github:
 
+[url "git@git.aldryn.com:"]
+    insteadOf = aldryn:
+
 [diff]
     # [i]ndex, [w]ork tree, [c]ommit, [o]bject instead of a/b
     mnemonicprefix = true
