@@ -15,3 +15,6 @@ alias photoshop='open -b "com.adobe.Photoshop"'
 alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 
 alias rmpyc="find . -name '*.pyc' -delete"
+
+alias docker-env='eval "$(docker-machine env default)"'
+alias docker-please='docker-machine start default && docker-env'
