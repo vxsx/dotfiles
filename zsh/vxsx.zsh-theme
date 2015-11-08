@@ -11,7 +11,7 @@ function _prompt_char() {
 
 function _prompt_stuff() {
     if [ -n "$TMUX" ]; then
-        echo " %{%b%k%f%}%{%F{${bkg}}%}"
+        # echo " %{%b%k%f%}%{%F{${bkg}}%}"
     else
         echo "%E" #stupid tmux doesn't draw a line to the end of the screen :(
     fi
@@ -22,8 +22,8 @@ function _prompt_stuff() {
 # these two values to choose.  If you don't specify, we'll assume you're
 # using the "dark" variant.
 case ${SOLARIZED_THEME:-dark} in
-    light) bkg=white;;
-    *)     bkg=black;;
+    light) bkg=none;; #light
+    *)     bkg=none;; #dark
 esac
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" [%{%B%F{blue}%}"
