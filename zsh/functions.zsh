@@ -120,3 +120,11 @@ tell application "Reminders"
 end tell
 EOF
 }
+
+# -------------------------------------------------------------------
+# Open git repo of the npm module
+# Usage: npmrepo browserslist-saucelabs
+# -------------------------------------------------------------------
+function npmrepo () {
+    open `npm view $1 repository.url | sed 's/git:/https:/' | | sed 's/git+ssh:/https:/' | sed 's/git+http:/https:/' | sed 's/git+https:/https:/' | sed 's/\.git//'`
+}
