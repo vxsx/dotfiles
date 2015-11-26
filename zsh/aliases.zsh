@@ -18,3 +18,5 @@ alias rmpyc="find . -name '*.pyc' -delete"
 
 alias docker-env='eval "$(docker-machine env default)"'
 alias docker-please='docker-machine start default && docker-env'
+
+alias idk='pbcopy <<< "¯\_(ツ)_/¯"'
