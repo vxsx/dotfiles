@@ -6,6 +6,7 @@
 [user]
     name = Vadim Sikora
     email = vadim.sikora@divio.ch
+	signingkey = 197D04BD
 
 [apply]
     whitespace = fix
@@ -77,3 +78,5 @@
     clean = git-lfs clean %f
     smudge = git-lfs smudge %f
     required = true
+[commit]
+	gpgsign = true
