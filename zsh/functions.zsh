@@ -102,6 +102,14 @@ function server() {
 }
 
 # -------------------------------------------------------------------
+# Check weather in the given place
+# -------------------------------------------------------------------
+function weather() {
+    local location="${1:-Zurich}"
+    curl -4 "http://wttr.in/${location}"
+}
+
+# -------------------------------------------------------------------
 # Add reminder to Reminders.app (OS X 10.8)
 # Usage: `remind 'foo'` or `echo 'foo' | remind`
 # -------------------------------------------------------------------
