@@ -17,6 +17,8 @@ alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 alias rmpyc="find . -name '*.pyc' -delete"
 
 alias docker-env='eval "$(docker-machine env default)"'
-alias docker-please='docker-machine start default && docker-env'
+alias docker-start='docker-machine start default && docker-env'
+alias docker-stop='docker-machine stop'
+alias dc='docker-compose'
 
 alias idk='pbcopy <<< "¯\_(ツ)_/¯"'
