@@ -20,5 +20,6 @@ alias docker-env='eval "$(docker-machine env default)"'
 alias docker-start='docker-machine start default && docker-env'
 alias docker-stop='docker-machine stop'
 alias dc='docker-compose'
+alias dm='docker-machine'
 
 alias idk='pbcopy <<< "¯\_(ツ)_/¯"'
