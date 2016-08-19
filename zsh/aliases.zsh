@@ -15,11 +15,15 @@ alias photoshop='open -b "com.adobe.Photoshop"'
 alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 
 alias rmpyc="find . -name '*.pyc' -delete"
+alias phantomjs-reset="rm -rf ~/Library/Application\ Support/Ofi\ Labs/PhantomJS/*"
 
 alias docker-env='eval "$(docker-machine env default)"'
 alias docker-start='docker-machine start default && docker-env'
 alias docker-stop='docker-machine stop'
 alias dc='docker-compose'
 alias dm='docker-machine'
+alias docker-kill-all='docker kill $(docker ps -q)'
+alias dcr='docker-compose run --rm web'
+
 
 alias idk='pbcopy <<< "¯\_(ツ)_/¯"'
