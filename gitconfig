@@ -80,3 +80,5 @@
     required = true
 [commit]
 	gpgsign = true
+[tag]
+	sort = version:refname
