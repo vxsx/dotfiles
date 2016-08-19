@@ -1,0 +1,48 @@
+#<pre>
+#!/bin/sh
+#https://github.com/vxsx/dotfiles
+dotfilesfolder=~/.dotfiles
+blue='\n\033[0;34m'
+end='\033[0m'
+depmatch=1
+# sadly doesn't always work
+# declare -a dotfiles=(zshrc gitignore gitconfig ackrc tmux.conf);
+
+echo "${blue}Checking dependencies$end"
+which git > /dev/null || {
+    echo "git not installed"
+    depmatch=0
+}
+which zsh > /dev/null || {
+    echo "zsh not installed"
+    depmatch=0
+}
+
+if [ $depmatch -eq 0 ]; then
+    echo "Please install dependencies and try again"
+    exit
+else
+    echo "All is well"
+fi
+
+echo "${blue}Fetching oh-my-zsh$end"
+git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+
+echo "${blue}Fetching dotfiles$end"
+git clone https://github.com/vxsx/dotfiles $dotfilesfolder
+
+echo "${blue}Backuping old dotfiles files$end"
+for file in zshrc gitignore gitconfig ackrc tmux.conf; do
+    [ -e ~/.$file ] && mv ~/.$file ~/.$file.old
+done
+
+echo "${blue}Creating symlinks$end"
+for file in zshrc gitignore gitconfig ackrc tmux.conf; do
+    ln -s $dotfilesfolder/$file ~/.$file
+done
+
+chsh --shell `which zsh`
+
+echo "${blue}Installation completed$end"
+echo "Relogin and enjoy"
+#</pre>
