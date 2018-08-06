@@ -17,6 +17,18 @@ function _prompt_stuff() {
     fi
 }
 
+# function preexec() {
+#     timer=${timer:-$SECONDS}
+# }
+#
+# function precmd() {
+#     if [ $timer ]; then
+#         timer_show=$(($SECONDS - $timer))
+#         export RPROMPT="%F{cyan}${timer_show}s %{$reset_color%} %*%{%f%k%b%}"
+#         unset timer
+#     fi
+# }
+
 # This theme works with both the "dark" and "light" variants of the
 # Solarized color schema.  Set the SOLARIZED_THEME variable to one of
 # these two values to choose.  If you don't specify, we'll assume you're

@@ -136,3 +136,20 @@ EOF
 function npmrepo () {
     open `npm view $1 repository.url | sed 's/git:/https:/' | | sed 's/git+ssh:/https:/' | sed 's/git+http:/https:/' | sed 's/git+https:/https:/' | sed 's/\.git//'`
 }
+
+# -------------------------------------------------------------------
+# Ban npm if project uses Yarn
+# -------------------------------------------------------------------
+npm() {
+    if [ -f "yarn.lock" ]; then
+        echo "$(tput sgr 0 1)$(tput setaf 1)You should use Yarn for this project.$(tput sgr0)"
+        return
+    fi
+    command npm $@
+}
+
+# Open chrome in app mode
+chrome() {
+    local location="${1}"
+    open -n -a "Google Chrome" --args "--app='${location}'"
+}

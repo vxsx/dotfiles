@@ -4,9 +4,9 @@
     excludesfile = ~/.gitignore
 
 [user]
-    name = Vadim Sikora
-    email = vadim.sikora@divio.ch
-	signingkey = 197D04BD
+	name = Vadim Sikora
+	email = vadim.sikora@divio.ch
+    signingkey = 197D04BD
 
 [apply]
     whitespace = fix
@@ -55,12 +55,16 @@
 
     # Deletes local branches that have been merged into master
     cleanup = "!git branch --merged master | grep -v '\\* master' | xargs -n 1 git branch -d"
+	restore = !git checkout $(git rev-list -n 1 HEAD -- \"$1\")^ -- \"$1\"
 
 [url "git@github.com:"]
     insteadOf = github:
 
 [url "git@git.aldryn.com:"]
     insteadOf = aldryn:
+
+[url "git@git.divio.com:"]
+    insteadOf = divio:
 
 [diff]
     # [i]ndex, [w]ork tree, [c]ommit, [o]bject instead of a/b
@@ -75,10 +79,13 @@
 [push]
     default = current
 [filter "lfs"]
-    clean = git-lfs clean %f
-    smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
     required = true
+	process = git-lfs filter-process
 [commit]
-	gpgsign = true
+    gpgsign = true
 [tag]
-	sort = version:refname
+    sort = version:refname
+[github]
+    user = vxsx
