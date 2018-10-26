@@ -4,7 +4,9 @@ export ZSH_THEME="vxsx"
 export SOLARIZED_THEME=light
 
 DISABLE_AUTO_TITLE=true
-plugins=(git git-extras bower tmuxinator fabric virtualenv sublime brew npm)
+plugins=(git git-extras bower tmuxinator brew virtualenv npm)
+
+alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
 
 export SVN_EDITOR=vim
 export EDITOR=vim
@@ -20,6 +22,9 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 source $ZSH/oh-my-zsh.sh
 
 . ~/.profile
-. `brew --prefix`/etc/profile.d/z.sh
+# . `brew --prefix`/etc/profile.d/z.sh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 nvm use 8

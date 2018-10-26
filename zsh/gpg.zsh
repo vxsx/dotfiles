@@ -1,7 +1,15 @@
-# GPG
-[ -f ~/.gnupg/gpg-agent.env ] && source ~/.gnupg/gpg-agent.env 
-if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
-  export GPG_AGENT_INFO
-else
-  eval $(gpg-agent --daemon --log-file /tmp/gpg.log --write-env-file ~/.gnupg/gpg-agent.env --pinentry-program /usr/local/bin/pinentry-mac)
+# Enable gpg-agent if it is not running
+GPG_AGENT_SOCKET="$(gpgconf --list-dirs agent-ssh-socket)"
+if [ ! -S $GPG_AGENT_SOCKET ]; then
+  gpg-agent --daemon >/dev/null 2>&1
+  export GPG_TTY=$(tty)
 fi
+
+# Set SSH to use gpg-agent if it is configured to do so
+GNUPGCONFIG="${GNUPGHOME:-"$HOME/.gnupg"}/gpg-agent.conf"
+if [ -r "$GNUPGCONFIG" ] && grep -q enable-ssh-support "$GNUPGCONFIG"; then
+  unset SSH_AGENT_PID
+  export SSH_AUTH_SOCK=$GPG_AGENT_SOCKET
+fi
+
+export GPG_TTY=$(tty)
