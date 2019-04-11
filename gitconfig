@@ -2,6 +2,7 @@
     pager = ~/.dotfiles/bin/diff-highlight | less
     mergeoptions = --no-edit
     excludesfile = ~/.gitignore
+    editor = /Applications/MacVim.app/Contents/MacOS/Vim
 
 [user]
 	name = Vadim Sikora

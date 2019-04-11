@@ -8,8 +8,8 @@ plugins=(git git-extras bower tmuxinator brew virtualenv npm)
 
 alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
 
-export SVN_EDITOR=vim
-export EDITOR=vim
+export SVN_EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
+export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
 export LC_ALL="en_US.UTF-8"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
