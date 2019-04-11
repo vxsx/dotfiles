@@ -5,8 +5,8 @@
 
 [user]
 	name = Vadim Sikora
-	email = vadim.sikora@divio.ch
-    signingkey = 197D04BD
+	email = vadim.sikora@gmail.com
+	signingkey = vadim
 
 [apply]
     whitespace = fix
@@ -65,6 +65,9 @@
 
 [url "git@git.divio.com:"]
     insteadOf = divio:
+
+[url "git@gitlab.com:"]
+    insteadOf = gitlab:
 
 [diff]
     # [i]ndex, [w]ork tree, [c]ommit, [o]bject instead of a/b

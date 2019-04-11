@@ -34,7 +34,7 @@ alias dps='divio project stop'
 alias dpu='divio project up'
 alias dpupd='divio project update'
 
-alias mvim='reattach-to-user-namespace mvim'
+alias mvim='open -a /Applications/MacVim.app'
 
 function notify() {
     local message="${1:-It is finished, whatever it is}";
