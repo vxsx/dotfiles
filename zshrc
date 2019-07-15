@@ -6,10 +6,10 @@ export SOLARIZED_THEME=light
 DISABLE_AUTO_TITLE=true
 plugins=(git git-extras bower tmuxinator brew virtualenv npm)
 
-alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
+alias vim=nvim
 
-export SVN_EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
-export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
+export SVN_EDITOR=nvim
+export EDITOR=nvim
 export LC_ALL="en_US.UTF-8"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
@@ -21,9 +21,17 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 
 source $ZSH/oh-my-zsh.sh
 
+unsetopt BEEP
 # . ~/.profile
 # . `brew --prefix`/etc/profile.d/z.sh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# divio autocomplete setup
+DIVIO_AC_ZSH_SETUP_PATH=/Users/vadim/Library/Caches/@divio/cli/autocomplete/zsh_setup && test -f $DIVIO_AC_ZSH_SETUP_PATH && source $DIVIO_AC_ZSH_SETUP_PATH;
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/vadim/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

@@ -38,5 +38,8 @@ alias mvim='open -a /Applications/MacVim.app'
 
 function notify() {
     local message="${1:-It is finished, whatever it is}";
-    reattach-to-user-namespace terminal-notifier -message "${message}" 
+    #reattach-to-user-namespace 
+    terminal-notifier -message "${message}" 
 }
+
+alias pydivio='~/.local/venvs/pipsi/bin/divio'

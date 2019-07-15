@@ -39,6 +39,14 @@
     br = branch
     wtf = !git-wtf
 
+    todo = "!sh -c ' \
+        [ $GIT_PREFIX ] && cd $GIT_PREFIX; \
+        git status --short --branch $*; \
+        git --no-pager diff -U0 master | \
+        grep \"^+.*TODO\" | \
+        sed \"s/^+//\" | \
+        git --no-pager grep -nFf - 2> /dev/null' -"
+
     # Pretty log
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 
@@ -49,7 +57,7 @@
     tags = tag -l
 
     # Start a new local repository and perform initial commit
-    this = !git init && git add . && git commmit -m \"Initial commit.\"
+    this = !git init && git add . && git commit -m \"Initial commit.\"
 
     # Unstage changes from the index
     unstage = reset HEAD --
