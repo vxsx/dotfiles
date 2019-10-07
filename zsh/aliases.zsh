@@ -42,4 +42,4 @@ function notify() {
     terminal-notifier -message "${message}" 
 }
 
-alias pydivio='~/.local/venvs/pipsi/bin/divio'
+alias pydivio='~/.local/venvs/divio-cli/bin/divio'
