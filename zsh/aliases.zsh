@@ -43,3 +43,9 @@ function notify() {
 }
 
 alias pydivio='~/.local/venvs/divio-cli/bin/divio'
+ 
+deploy() {
+    local folder="`basename \`pwd\``"
+    sleep 3 && divio project:deploy && notify "deployed ${folder}" || notify "failed to deploy ${folder}"
+}
+

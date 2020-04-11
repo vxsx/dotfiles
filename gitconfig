@@ -3,6 +3,7 @@
     mergeoptions = --no-edit
     excludesfile = ~/.gitignore
     editor = /Applications/MacVim.app/Contents/MacOS/Vim
+	attributesfile = ~/.gitattributes
 
 [user]
 	name = Vadim Sikora
@@ -84,6 +85,9 @@
 
 [diff "spaceman-diff"]
     command = ~/.dotfiles/bin/spaceman-diff
+
+[difftool "Kaleidoscope"]
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 
 [credential]
     helper = osxkeychain
