@@ -42,7 +42,8 @@ function notify() {
     terminal-notifier -message "${message}" 
 }
 
-alias pydivio='~/.local/venvs/divio-cli/bin/divio'
+# alias pydivio='~/.local/venvs/divio-cli/bin/divio'
+alias pydivio='/Users/vadim/work/divio-cli/env/bin/divio'
  
 deploy() {
     local folder="`basename \`pwd\``"
