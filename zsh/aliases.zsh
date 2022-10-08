@@ -9,9 +9,9 @@ alias showHiddenFiles="defaults write com.apple.finder AppleShowAllFiles TRUE &&
 alias hideHiddenFiles="defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder"
 
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update --system; sudo gem update'
-alias photoshop='open -b "com.adobe.Photoshop"'
-alias plex='open -n -a "Google Chrome" --args "--app=http://127.0.0.1:32400/web/index.html"'
+# alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update --system; sudo gem update'
+# alias photoshop='open -b "com.adobe.Photoshop"'
+# alias plex='open -n -a "Google Chrome" --args "--app=http://127.0.0.1:32400/web/index.html"'
 
 alias rmpyc="find . -name '*.pyc' -delete"
 alias phantomjs-reset="rm -rf ~/Library/Application\ Support/Ofi\ Labs/PhantomJS/*"
@@ -39,11 +39,11 @@ alias mvim='open -a /Applications/MacVim.app'
 function notify() {
     local message="${1:-It is finished, whatever it is}";
     #reattach-to-user-namespace 
-    terminal-notifier -message "${message}" 
+    terminal-notifier -sound default -message "${message}" 
 }
 
 # alias pydivio='~/.local/venvs/divio-cli/bin/divio'
-alias pydivio='/Users/vadim/work/divio-cli/env/bin/divio'
+alias pydivio='~/.local/pipx/venvs/divio-cli/bin/divio'
  
 deploy() {
     local folder="`basename \`pwd\``"
