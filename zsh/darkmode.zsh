@@ -1,10 +1,12 @@
 #autoload
 function alacritty-theme() {
-    local theme="${1}"
+    local theme="solarized_${1}"
     # sed doesn't like symlinks, so uh, should use realpath but whatever 
-    local config_path="/Users/vadim/Dropbox/Mackup/.config/alacritty.yml" # ~/.config/alacritty.yml"
+    local config_path="/Users/vadim/Dropbox/Mackup/.config/alacritty/alacritty.toml" # ~/.config/alacritty/alacritty.toml"
+    local vim_local_path="/Users/vadim/.vimrc.local"
 
-    sed -i "" -e "s#^colors: \*.*#colors: *$theme#g" $config_path
+    sed -i "" -e "s#~/.config/alacritty/.*.toml#~/.config/alacritty/$theme.toml#g" $config_path
+    sed -i "" -e "s#^set background=.*#set background=${1}#g" $vim_local_path
 } 
 
 function change_background() {
@@ -21,14 +23,14 @@ function change_background() {
 
     # change tmux
     case $mode in
-        dark) /usr/local/bin/tmux source-file ~/.dotfiles/tmux-statusline-dark.conf;;
-        light) /usr/local/bin/tmux source-file ~/.dotfiles/tmux-statusline-light.conf;;
+        dark) tmux source-file ~/.dotfiles/tmux-statusline-dark.conf;;
+        light) tmux source-file ~/.dotfiles/tmux-statusline-light.conf;;
     esac
 
     # change alacritty
     case $mode in
-        dark) alacritty-theme solarized_dark;;
-        light) alacritty-theme solarized_light;;
+        dark) alacritty-theme dark;;
+        light) alacritty-theme light;;
     esac
 }
 
