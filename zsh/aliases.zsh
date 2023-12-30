@@ -46,7 +46,8 @@ function notify() {
 alias pydivio='~/.local/pipx/venvs/divio-cli/bin/divio'
  
 deploy() {
+    local server="${1:-test}"
     local folder="`basename \`pwd\``"
-    sleep 3 && divio project:deploy && notify "deployed ${folder}" || notify "failed to deploy ${folder}"
+    sleep 3 && divio app deploy ${server} && notify "deployed ${folder}" || notify "failed to deploy ${folder}"
 }
 
