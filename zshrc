@@ -22,8 +22,6 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 source $ZSH/oh-my-zsh.sh
 
 unsetopt BEEP
-# . ~/.profile
-# . `brew --prefix`/etc/profile.d/z.sh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
