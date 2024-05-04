@@ -101,49 +101,12 @@ function server() {
     python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
 }
 
-# -------------------------------------------------------------------
-# Check weather in the given place
-# -------------------------------------------------------------------
-function weather() {
-    local location="${1:-Zurich}"
-    curl -4 "http://wttr.in/${location}"
-}
-
-# -------------------------------------------------------------------
-# Add reminder to Reminders.app (OS X 10.8)
-# Usage: `remind 'foo'` or `echo 'foo' | remind`
-# -------------------------------------------------------------------
-function remind() {
-    local text
-    if [ -t 0 ]; then
-        text="$1" # argument
-    else
-        text=$(cat) # pipe
-    fi
-    osascript >/dev/null <<EOF
-tell application "Reminders"
-    tell the default list
-        make new reminder with properties {name:"$text"}
-    end tell
-end tell
-EOF
-}
-
-# -------------------------------------------------------------------
-# Open git repo of the npm module
-# Usage: npmrepo browserslist-saucelabs
-# -------------------------------------------------------------------
-function npmrepo () {
-    open `npm view $1 repository.url | sed 's/git:/https:/' | | sed 's/git+ssh:/https:/' | sed 's/git+http:/https:/' | sed 's/git+https:/https:/' | sed 's/\.git//'`
-}
-
-function chrome() {
-    local location="${1}"
-    open -n -a "Google Chrome" --args "--app='${location}'"
-}
-
 function convert() {
     local file="${1}"
 
     ffmpeg -i $file -vcodec h264 -acodec aac ${file[0,-5]}.mp4
+}
+
+function brain() {
+    vim '~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Brain'
 }
