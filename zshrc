@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/.dotfiles/zsh/
 export ZSH_THEME=""
@@ -22,13 +29,20 @@ source $ZSH/oh-my-zsh.sh
 unsetopt BEEP
 
 # Pure prompt
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
+# fpath+=("$(brew --prefix)/share/zsh/site-functions")
+#
+# autoload -U promptinit; promptinit
+#
+# zstyle ':prompt:pure:path' color yellow
+# zstyle ':prompt:pure:git:branch' color blue
+# zstyle ':prompt:pure:prompt:*' color cyan
+# export PURE_PROMPT_SYMBOL='%%'
+# export VIRTUAL_ENV_DISABLE_PROMPT=12
+#
+# prompt pure
 
-autoload -U promptinit; promptinit
+# Powerlevel prompt
+source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 
-zstyle ':prompt:pure:path' color yellow
-zstyle ':prompt:pure:git:branch' color blue
-zstyle ':prompt:pure:prompt:*' color cyan
-export PURE_PROMPT_SYMBOL='%%'
-
-prompt pure
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
