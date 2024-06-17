@@ -14,7 +14,7 @@ function change_background() {
     # change background to the given mode. If mode is missing, 
     # we try to deduct it from the system settings.
 
-    local mode="light" # default value
+    local mode="dark" # default value
 
     if defaults read -g AppleInterfaceStyle &> /dev/null
     then
