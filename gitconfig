@@ -2,7 +2,7 @@
     pager = ~/.dotfiles/bin/diff-highlight | less
     mergeoptions = --no-edit
     excludesfile = ~/.gitignore
-    editor = /Applications/MacVim.app/Contents/MacOS/Vim
+    editor = nvim
 	attributesfile = ~/.gitattributes
 
 [user]

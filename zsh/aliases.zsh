@@ -40,3 +40,6 @@ deploy() {
     sleep 3 && divio app deploy ${server} && notify "deployed ${folder}" || notify "failed to deploy ${folder}"
 }
 
+if which bat >/dev/null 2>&1; then
+    alias cat='bat --theme="Solarized (dark)"'
+fi
