@@ -4,14 +4,18 @@
     excludesfile = ~/.gitignore
     editor = nvim
 	attributesfile = ~/.gitattributes
+    ignorecase = false
 
 [user]
 	name = Vadim Sikora
 	email = vadim.sikora@divio.com
-	signingkey = vadim
+	signingkey = vadim.sikora@divio.com
 
 [apply]
     whitespace = fix
+
+[rebase]
+    instructionFormat = [%an <%ae>] %s
 
 [color]
     ui = true
@@ -107,3 +111,9 @@
     sort = version:refname
 [github]
     user = vxsx
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
