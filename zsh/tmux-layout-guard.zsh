@@ -5,9 +5,11 @@
 # The sidebar's `after-new-window` hook splits a sidebar pane into every new
 # window. A layout tool then applies the project's layout (main-horizontal &c.)
 # with `select-layout`, which treats that sidebar pane as just another pane and
-# folds it into the arrangement — so the window comes up scrambled. Both of the
-# layout tools here are affected: 8 of 17 ~/.config/tmuxinator/*.yml and 8 of 13
-# ~/.config/herdr-spreader/*.yaml set an explicit layout.
+# folds it into the arrangement — so the window comes up scrambled. tmuxinator is
+# the only tool that needs guarding: 8 of 17 ~/.config/tmuxinator/*.yml set an
+# explicit layout. herdr-spreader looks like a second candidate and isn't one —
+# it builds herdr tabs over herdr's socket API rather than tmux windows, so no
+# after-new-window hook fires and there is no select-layout to interfere with.
 #
 # `@sidebar_auto_create track` (local patch 0004) makes auto-creation follow
 # `@sidebar_enabled`, so turning that off while a project is being built means
@@ -19,7 +21,7 @@
 # $PATH and clobbering it breaks the shell.
 
 # Disable sidebar auto-creation, then restore the previous value from a detached
-# job. Restoring inline would not work: these tools attach by default and block
+# job. Restoring inline would not work: tmuxinator attaches by default and blocks
 # until you detach, which would leave sidebars disabled for the whole session.
 # Every window and its layout is created in the first seconds, so a short delay
 # covers the part that matters.
@@ -43,14 +45,4 @@ function _sidebar_layout_guard() {
 function tmuxinator() {
     _sidebar_layout_guard
     command tmuxinator "$@"
-}
-
-# `spread` (see aliases.zsh) calls `herdr-spreader` unqualified, so this
-# intercepts it. Only `apply` builds windows; every other subcommand (list,
-# --help, …) must not touch the sidebar setting.
-function herdr-spreader() {
-    if [[ "$1" == "apply" ]]; then
-        _sidebar_layout_guard
-    fi
-    command herdr-spreader "$@"
 }
