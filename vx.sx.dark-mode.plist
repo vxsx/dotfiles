@@ -13,7 +13,7 @@
     <string>/Users/vadim/.dark-mode-notify-stdout.log</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/local/bin/dark-notify</string>
+        <string>/opt/homebrew/bin/dark-notify</string>
         <string>-c</string>
         <string>/bin/zsh /Users/vadim/.dotfiles/zsh/darkmode.zsh</string>
     </array>
