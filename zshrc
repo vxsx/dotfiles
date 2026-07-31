@@ -46,3 +46,17 @@ source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+## temporary stuff
+
+alias vim="nvim -u ~/.config/nvim/init.vim"
+alias newvim="nvim -u ~/.config/nvim/init.lua"
+
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
+# bun completions
+[ -s "/Users/vadim/.bun/_bun" ] && source "/Users/vadim/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

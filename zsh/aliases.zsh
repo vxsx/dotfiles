@@ -15,9 +15,10 @@ alias hideHiddenFiles="defaults write com.apple.finder AppleShowAllFiles FALSE &
 
 alias rmpyc="find . -name '*.pyc' -delete"
 
-alias dc='docker-compose'
-alias dcr='docker-compose run --rm web'
+alias dc='docker compose'
+alias dcr='docker compose run --rm web'
 
+alias psql="docker run -ti --rm alpine/psql"
 
 alias get="curl -O -L"
 alias idk='pbcopy <<< "¯\_(ツ)_/¯"'
@@ -41,5 +42,9 @@ deploy() {
 }
 
 if which bat >/dev/null 2>&1; then
-    alias cat='bat --theme="Solarized (dark)"'
+    alias ccat='bat --theme="Solarized (dark)"'
 fi
+
+alias rmheic='rm ~/Downloads/*.HEIC'
+
+alias pew="/usr/bin/afplay /System/Library/Sounds/Ping.aiff"
